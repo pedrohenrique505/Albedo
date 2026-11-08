@@ -4,7 +4,7 @@
 
 Feito:
 
-- Repo git (`main`, remote `git@github.com:pedrohenrique505/Albedo.git` — push pendente de `gh auth login`). Commits: `57af89d` setup, `82a0269` órfãos MCP.
+- Repo publicado: https://github.com/pedrohenrique505/Albedo (`main` tracking `origin/main`). Commits: setup, órfãos MCP, lote headless.
 - ISO extraída para `game/`; Title ID `445007F7`; SDK v0.10.0 local (KI-01).
 - **Lote headless de órfãos:** `scripts/find_orphans.py` (PyGhidra, GUI fechada) achou 172 candidatos; 97 entradas `orphan_*` no manifest após filtrar interiores de thunk, mesclar clusters de switch (`821B…/821C…/821D…/821F4…` fora; `824B4D80`, `8220EE04`, `824DE360`, `82469D74`, `82469070` mesclados com size até a próxima registrada) e declarar tails de validação.
 - Codegen: 21.868 funções registradas, **1 único `REX_FATAL("Unresolved`** restante — bloco SEH (`mr r8,r8`) em `0x8246908C → 0x82468FE8`, que o runtime não despacha (ver KI-03).
