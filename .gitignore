@@ -1,0 +1,29 @@
+# Game data — nunca commitar (dump do usuário)
+game/
+*.iso
+*.xex
+*.xbx
+*.wmv
+
+# Build / codegen
+build/
+project/generated/
+project/out/
+
+# SDK / ferramentas baixadas
+tools/rexglue/
+tools/rexglue-dl/
+tools/xexloader/
+third_party/
+
+# Ghidra
+*.gpr
+*.rep/
+*.lock
+*.lock~
+
+# Python / geral
+.venv/
+__pycache__/
+*.o
+.claude/settings.local.json

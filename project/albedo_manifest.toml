@@ -1,0 +1,23 @@
+# albedo — ReXGlue manifest
+# Gerado inicialmente à mão; `rexglue codegen` valida e pode regenerar.
+# Entrypoint functions/orphans entram aqui conforme o loop do Ghidra (ver CLAUDE.md).
+
+[project]
+name = "albedo"
+sdk_version = "0.10.0"
+game_root = "../game"
+
+[entrypoint]
+file_path = "../game/default.xex"
+out_directory_path = "generated/default"
+includes = []
+
+# Orphans: targets of `b` with no registered function (codegen 2026-11-08).
+# Sem size: o analyzer dimensiona; conferir no Ghidra se algum passar de thunk.
+[entrypoint.functions]
+0x824239F4 = { name = "orphan_824239F4" }
+0x82407E3C = { name = "orphan_82407E3C" }
+0x824238DC = { name = "orphan_824238DC" }
+0x8222E8E0 = { name = "orphan_8222E8E0" }
+# Runtime: [FATAL] Call to invalid or unregistered function (primeiro boot)
+0x82154A08 = { name = "orphan_82154A08" }
