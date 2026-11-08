@@ -23,3 +23,97 @@ includes = []
 # Sizes via Ghidra MCP (read_memory + disasm): A08 ends in bctr, A20 in blr.
 0x82154A08 = { name = "orphan_82154A08", size = 24 }
 0x82154A20 = { name = "orphan_82154A20", size = 48 }
+# Bulk orphans via scripts/find_orphans.py (PyGhidra headless, 2026-11-08):
+# 172 candidatos, 4 interiores de thunk descartados. size só p/ thunks <=32 (ok).
+0x8210BB88 = { name = "orphan_8210BB88", size = 12 }
+0x8210FAA0 = { name = "orphan_8210FAA0" }
+0x8211A5B8 = { name = "orphan_8211A5B8", size = 12 }
+0x8212FE20 = { name = "orphan_8212FE20", size = 24 }
+0x8212FE44 = { name = "orphan_8212FE44", size = 20 }
+0x82200A24 = { name = "orphan_82200A24" }
+0x82200A38 = { name = "orphan_82200A38" }
+0x8220E2D8 = { name = "orphan_8220E2D8" }
+0x8220E2EC = { name = "orphan_8220E2EC" }
+0x8220F804 = { name = "orphan_8220F804" }
+0x8220F810 = { name = "orphan_8220F810" }
+0x8220F858 = { name = "orphan_8220F858" }
+0x8220F868 = { name = "orphan_8220F868" }
+0x823FBCB0 = { name = "orphan_823FBCB0", size = 8 }
+0x82401EE8 = { name = "orphan_82401EE8", size = 20 }
+0x82407DC8 = { name = "orphan_82407DC8" }
+0x82423870 = { name = "orphan_82423870" }
+0x82423988 = { name = "orphan_82423988" }
+0x8245B060 = { name = "orphan_8245B060", size = 8 }
+0x824691E8 = { name = "orphan_824691E8", size = 24 }
+0x82469554 = { name = "orphan_82469554", size = 12 }
+0x82469694 = { name = "orphan_82469694", size = 12 }
+0x8246B004 = { name = "orphan_8246B004" }
+0x82475CE8 = { name = "orphan_82475CE8" }
+0x824774BC = { name = "orphan_824774BC" }
+0x82477634 = { name = "orphan_82477634" }
+0x8249A840 = { name = "orphan_8249A840", size = 16 }
+0x8249CB58 = { name = "orphan_8249CB58", size = 8 }
+0x8249F098 = { name = "orphan_8249F098", size = 8 }
+0x8249F0A8 = { name = "orphan_8249F0A8", size = 8 }
+0x8249F0B0 = { name = "orphan_8249F0B0", size = 8 }
+0x824A5068 = { name = "orphan_824A5068", size = 8 }
+0x824A5070 = { name = "orphan_824A5070", size = 8 }
+0x824A5078 = { name = "orphan_824A5078", size = 8 }
+0x824A5080 = { name = "orphan_824A5080", size = 8 }
+0x824A5090 = { name = "orphan_824A5090", size = 8 }
+0x824A5098 = { name = "orphan_824A5098", size = 8 }
+0x824A50A0 = { name = "orphan_824A50A0", size = 8 }
+0x824A50A8 = { name = "orphan_824A50A8", size = 8 }
+0x824A50B0 = { name = "orphan_824A50B0", size = 8 }
+0x824A5348 = { name = "orphan_824A5348", size = 8 }
+0x824A5358 = { name = "orphan_824A5358", size = 8 }
+0x824A5360 = { name = "orphan_824A5360", size = 8 }
+0x824A5368 = { name = "orphan_824A5368", size = 8 }
+0x824A5370 = { name = "orphan_824A5370", size = 8 }
+0x824A5948 = { name = "orphan_824A5948", size = 24 }
+0x824A65E0 = { name = "orphan_824A65E0", size = 8 }
+0x824A7328 = { name = "orphan_824A7328", size = 8 }
+0x824A7818 = { name = "orphan_824A7818", size = 8 }
+0x824AA0C0 = { name = "orphan_824AA0C0" }
+0x824AA350 = { name = "orphan_824AA350", size = 8 }
+0x824B24D0 = { name = "orphan_824B24D0", size = 32 }
+0x824B7938 = { name = "orphan_824B7938", size = 8 }
+0x824E30E4 = { name = "orphan_824E30E4" }
+0x824E3400 = { name = "orphan_824E3400", size = 24 }
+0x824E34A4 = { name = "orphan_824E34A4" }
+0x824E370C = { name = "orphan_824E370C", size = 28 }
+0x824E39B4 = { name = "orphan_824E39B4" }
+0x824E3F14 = { name = "orphan_824E3F14", size = 24 }
+0x824E44CC = { name = "orphan_824E44CC", size = 24 }
+0x824E45A4 = { name = "orphan_824E45A4", size = 16 }
+0x824E46D4 = { name = "orphan_824E46D4" }
+0x824E4974 = { name = "orphan_824E4974", size = 32 }
+0x824E4CE0 = { name = "orphan_824E4CE0" }
+0x824E54E8 = { name = "orphan_824E54E8", size = 12 }
+0x824ECCA8 = { name = "orphan_824ECCA8", size = 8 }
+0x824ECCC8 = { name = "orphan_824ECCC8", size = 8 }
+0x824ECCE8 = { name = "orphan_824ECCE8", size = 8 }
+0x824ECD08 = { name = "orphan_824ECD08", size = 8 }
+0x824ECE80 = { name = "orphan_824ECE80", size = 32 }
+0x824ECEA0 = { name = "orphan_824ECEA0", size = 32 }
+0x824ECEC0 = { name = "orphan_824ECEC0", size = 32 }
+0x824ECEE0 = { name = "orphan_824ECEE0", size = 32 }
+0x824ECF00 = { name = "orphan_824ECF00", size = 32 }
+0x824ECF20 = { name = "orphan_824ECF20", size = 32 }
+0x824ECF40 = { name = "orphan_824ECF40", size = 32 }
+0x824ECF60 = { name = "orphan_824ECF60", size = 32 }
+0x824ECF80 = { name = "orphan_824ECF80", size = 32 }
+0x824ECFA0 = { name = "orphan_824ECFA0", size = 32 }
+0x824F3FE0 = { name = "orphan_824F3FE0", size = 8 }
+0x824FDEB8 = { name = "orphan_824FDEB8", size = 32 }
+# Tails da validacao pos-lote (size_of.py): F0C e interior de F08, coberto sem size.
+0x82469564 = { name = "orphan_82469564", size = 8 }
+0x8249A85C = { name = "orphan_8249A85C", size = 24 }
+0x824E45B8 = { name = "orphan_824E45B8" }
+0x824B4D80 = { name = "orphan_824B4D80", size = 276 }
+0x8220EE04 = { name = "orphan_8220EE04", size = 264 }
+0x82469D74 = { name = "orphan_82469D74", size = 188 }
+0x82469070 = { name = "orphan_82469070", size = 92 }
+0x824DE360 = { name = "orphan_824DE360", size = 384 }
+0x82468FE8 = { name = "orphan_82468FE8" }  # size=136 piora (3 unresolved): bloco SEH mr r8,r8, runtime nao despacha
+0x8224CD08 = { name = "orphan_8224CD08", size = 24 }

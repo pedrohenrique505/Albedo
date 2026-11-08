@@ -1,18 +1,13 @@
 # Status
 
-**Fase: setup inicial concluído — primeiro FATAL de função não registrada (2026-11-08).**
-
-Pipeline inteiro provado: extrair → codegen → build → boot. Title ID `445007F7` (Media `78E3E986`, build 2010-09-10).
+**Fase: primeiro boot sustentado (2026-11-08).** O jogo roda 45 s sem FATAL e encerra limpo pelo timeout.
 
 Feito:
 
-- Repo git inicializado (`main`, remote `git@github.com:pedrohenrique505/Albedo.git` — push pendente de `gh auth login`).
-- ISO (USA, Europe) identificada e extraída para `game/` (5.1 GB, git-ignored): SHA-256 `54e7b3f6…b5fff`, 1.352 arquivos, `default.xex` 7.708.672 bytes (SHA-256 `4e8c3b12…dd89`, interno `ben10_ua_xbox.exe`, Papaya Studio).
-- Scaffold no padrão ReXGlue (referência: `beatles-recomp`): `project/` (manifest + host app mínimo), `scripts/` (extract/setup/codegen/build/run/ghidra), `docs/`, `progression/`.
-- Ambiente verificado: Ghidra 12.1.2 + REA 6.8.0 (provider Ghidra healthy; REA não abre XEX2 — quem carrega é o XEXLoaderWV), `extract-xiso`, clang 23/mold/ccache/ninja, Vulkan ok.
-- SDK v0.10.0 copiado de `beatles-recomp/tools/rexglue` (mesma versão; `gh` quebrado — KI-01).
-- **Codegen passou:** 21.784 funções, 219 arquivos gerados, 0 `Unresolved`. Só 4 órfãos de validação + 1 de runtime declarados no manifest.
-- **Build passou:** `build/albedo/albedo` (33 MB).
-- **Primeiro boot:** Vulkan + áudio SDL inicializam, guest entra e roda até `[FATAL] Call to invalid or unregistered function at guest address 0x82154A20` — ver diagnóstico em [known-issues.md](known-issues.md) (KI-03).
+- Repo git (`main`, remote `git@github.com:pedrohenrique505/Albedo.git` — push pendente de `gh auth login`). Commits: `57af89d` setup, `82a0269` órfãos MCP.
+- ISO extraída para `game/`; Title ID `445007F7`; SDK v0.10.0 local (KI-01).
+- **Lote headless de órfãos:** `scripts/find_orphans.py` (PyGhidra, GUI fechada) achou 172 candidatos; 97 entradas `orphan_*` no manifest após filtrar interiores de thunk, mesclar clusters de switch (`821B…/821C…/821D…/821F4…` fora; `824B4D80`, `8220EE04`, `824DE360`, `82469D74`, `82469070` mesclados com size até a próxima registrada) e declarar tails de validação.
+- Codegen: 21.868 funções registradas, **1 único `REX_FATAL("Unresolved`** restante — bloco SEH (`mr r8,r8`) em `0x8246908C → 0x82468FE8`, que o runtime não despacha (ver KI-03).
+- **Boot:** `timeout 45 scripts/run.sh` — 0 FATAL, Vulkan apresentando, warnings repetidos de texture fetch (~cadência de frame) e encerramento gracioso (`Window closing / Execution complete`). Antes do lote, o boot morria em ~5 s (`0x824A7818`); depois passou também por `0x8224CD08` (declarado, size 24).
 
-Próximo: loop de órfãos com sizing via Ghidra. Ver [next-steps.md](next-steps.md).
+Não verificado visualmente: o que está na tela (menu? logo?) — conferir rodando sem timeout. Ver [next-steps.md](next-steps.md).

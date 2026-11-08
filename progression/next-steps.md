@@ -1,8 +1,7 @@
 # Next steps
 
-1. **Autenticar e publicar:** `gh auth login -h github.com`, revisar stage, commit inicial, `git push -u origin main`.
-2. ~~SDK~~ ✓ (copiado do `beatles-recomp`; trocar por `scripts/setup_rexglue.sh` quando o `gh` voltar).
-3. ~~Extrair~~ ✓ (`game/` completo; Title ID `445007F7`).
-4. **Ghidra em lote (desbloqueia o KI-03):** instalar XEXLoaderWV (`tools/xexloader/ghidra_12.0.4_PUBLIC_20260325_XEXLoaderWV.zip`) + Jython, importar `default.xex` (`PowerPC:BE:64:A2ALT-32addr`, base `0x82000000`), e dimensionar a região `0x82154A08…` e demais alvos órfãos. Alternativa: adaptar `find_orphans.py`/`resolve_orphans.py` do `beatles-recomp`.
-5. **Loop FATAL → manifest:** a cada `[FATAL] ... guest address 0x...`, dimensionar no Ghidra, declarar em `[entrypoint.functions]` (com `size` quando for thunk), `scripts/codegen.sh` + `scripts/build.sh` + boot, até passar da inicialização. Manter `grep REX_FATAL("Unresolved` = 0.
-6. **Depois do boot:** classificar shaders ausentes (KI-04), stubs de kernel/XAM no `build/run.log` e primeiro frame renderizado.
+1. **Conferir visualmente:** `scripts/run.sh` sem timeout — o que aparece (logo, menu, FMV)? Input de controle/teclado responde? Registrar em `status.md` com screenshot se possível.
+2. **Autenticar e publicar:** `gh auth login -h github.com`, `git push -u origin main`.
+3. **Jogar até o próximo FATAL:** cada `[FATAL] ... guest address 0x...` novo → `scripts/size_of.py` (headless, GUI fechada) ou MCP (GUI aberta) → declarar no manifest → codegen/build/boot. Manter o contador `grep -h 'REX_FATAL("Unresolved' project/generated/default/*.cpp | wc -l` em ≤1 (SEH conhecido, KI-03).
+4. **Clusters de switch adiados:** regiões `821B…/821C…/821D…/821F4…` ficaram fora do manifest (são corpos de switch/SEH de funções grandes). Se um FATAL cair nelas, tratar como função única com size até a próxima registrada — não declarar os pedaços.
+5. **KI-04/KI-05:** shaders `.vsc/.psc` ausentes e texture fetch inválido, depois da conferência visual.

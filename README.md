@@ -4,7 +4,7 @@ Static recompilation of *Ben 10 – Ultimate Alien – Cosmic Destruction* (Xbox
 
 > **Bring your own disc.** This repository contains **no game code or assets**. You need your own legitimate copy of the game, dumped from a disc you own. Nothing from the game is distributed here, and `game/`, `*.iso` and `*.xex` are git-ignored.
 
-> **Status: initial setup done — pipeline proven end-to-end.** Title ID `445007F7`; 21,784 functions recompiled, build passes, first boot reaches guest code and stops at the first unregistered-function FATAL (`0x82154A20`, the Ghidra orphan-sizing loop). See [`progression/status.md`](progression/status.md).
+> **Status: first sustained boot.** Title ID `445007F7`; 21,868 functions registered (97 Ghidra-sized orphans in the manifest), build passes, and a 45 s run renders on Vulkan with no FATAL. What is on screen is not yet verified. See [`progression/status.md`](progression/status.md).
 
 ## Legal
 

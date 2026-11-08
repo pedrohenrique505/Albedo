@@ -11,3 +11,10 @@
 - Codegen: Title ID `445007F7`; 4 órfãos de validação declarados → passou (21.784 funções, 0 unresolved). Build ok (33 MB).
 - Boot 1: FATAL `0x82154A08`. Declarado sem size → Boot 2: FATAL `0x82154A20` (+0x18, thunks de 24 B).
 - Diagnóstico do core (PID 20561): SIGABRT via `InvalidFunctionTrap`→`abort()` na thread guest; sem OOM/shm cheio. Registrado como KI-03; não repetir o mesmo binário.
+
+## 2026-11-08 — lote de órfãos e primeiro boot sustentado
+
+- Commit `57af89d` (setup) e `82a0269` (órfãos `82154A08/A20` sized via MCP: boot ~5 s, FATAL seguinte `824A7818`).
+- GUI fechada a pedido; lote headless com `scripts/find_orphans.py` (PyGhidra sobre cópia do projeto em `build/ghidra-work/`): 172 candidatos.
+- Filtragem: size só p/ thunks ≤32; clusters de switch (`821B/821C/821D/821F4`) removidos (204→24 unresolved); merges com size até a próxima registrada (`824B4D80` 276, `8220EE04` 264, `824DE360` 384, `82469D74` 188, `82469070` 92) → 1 unresolved (SEH `8246908C→82468FE8`).
+- Runtime: FATAL `8224CD08` sized 24 via `scripts/size_of.py` e declarado. **Boot de 45 s: 0 FATAL, shutdown limpo pelo timeout.**
