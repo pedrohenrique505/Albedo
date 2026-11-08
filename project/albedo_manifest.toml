@@ -20,4 +20,6 @@ includes = []
 0x824238DC = { name = "orphan_824238DC" }
 0x8222E8E0 = { name = "orphan_8222E8E0" }
 # Runtime: [FATAL] Call to invalid or unregistered function (primeiro boot)
-0x82154A08 = { name = "orphan_82154A08" }
+# Sizes via Ghidra MCP (read_memory + disasm): A08 ends in bctr, A20 in blr.
+0x82154A08 = { name = "orphan_82154A08", size = 24 }
+0x82154A20 = { name = "orphan_82154A20", size = 48 }
